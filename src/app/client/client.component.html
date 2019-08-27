@@ -1,0 +1,60 @@
+
+<mat-card fxFlex>
+  <mat-card-title>
+    Cadastro do Cliente
+  </mat-card-title>
+
+  <mat-card-content>
+    <form [formGroup]="clientForm" (ngSubmit)="save()" 
+        fxLayout="column" fxLayoutAlign="space-between" #form="ngForm">
+      <input type="hidden" formControlName="_id">
+
+      <mat-form-field>
+        <input matInput placeholder="Nome do Client" formControlName="name">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="CPF" formControlName="cpf" type="number">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Telefone" formControlName="phone" type="number">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Endereço" formControlName="address" type="string">
+      </mat-form-field>
+
+      <div fxLayout="row" fxLayoutAlign="end end">
+        <button mat-button color="primary" type="submit">SALVAR</button>
+        <button mat-button color="warn" type="reset">CANCELAR</button>
+      </div>
+    </form>
+  </mat-card-content>
+
+  <mat-card-content>
+    <ng-container *ngIf="clients?.length>0; else empty">
+      <mat-list>
+          <mat-card-title>
+              Listagem de Clientes
+          </mat-card-title>
+        <mat-list-item *ngFor="let cl of clients">          
+          <h4 mat-line>Nome: {{cl.name}}</h4>
+          <h4 mat-line>CPF: {{ cl.cpf }} </h4>
+          <h4 mat-line>Telefone: {{cl.phone}}</h4>
+          <h4 mat-line>Endereço: {{cl.address}}</h4>
+          <button mat-icon-button color="accent" (click)="delete(cl)">
+            <mat-icon>delete</mat-icon>
+          </button>
+          <button mat-icon-button color="primary" (click)="edit(cl)">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </mat-list-item>
+      </mat-list>   
+    </ng-container> 
+    <ng-template #empty>
+      <div><em>Empty</em></div>
+    </ng-template>
+
+  </mat-card-content>
+</mat-card>

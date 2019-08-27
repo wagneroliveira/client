@@ -1,0 +1,40 @@
+version: '3'
+
+services:  
+  frontend:
+    container_name: api-frontend
+    restart: unless-stopped
+    build: .
+    ports:
+      - '4200:4200'
+    links:
+      - mongo
+    command: "npm start"
+    networks: 
+      - cd-network
+
+  backend:
+    container_name: api-backend
+    restart: unless-stopped
+    build: ./server
+    ports:
+      - '3000:3000'
+    links:
+      - mongo
+      - frontend
+    command: "node app.js"
+    networks: 
+      - cd-network
+
+  mongo:
+    container_name: mongodb
+    restart: unless-stopped
+    image: mongo:4.0.10
+    ports:
+      - '27017:27017'
+    networks: 
+      - cd-network
+
+networks: 
+  cd-network: 
+    driver: bridge
