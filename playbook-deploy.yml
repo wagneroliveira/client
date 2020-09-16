@@ -12,10 +12,10 @@
       git:
          repo: "https://github.com/wagneroliveira/client.git"
          dest: ~/ansible/client-test
-    #         version: "{{ version | default('master') }}"
          force: yes
 
-    #    - command: docker-compose up -d
+    - name: Execute script to docker-compose
+      shell: rundockerized.sh
 
 ...
 
