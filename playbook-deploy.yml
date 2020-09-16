@@ -1,11 +1,21 @@
-- name: Fist example deploy with Ansible AWX
+---
+- name: Deploy
   hosts: all
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+
   tasks:
-#     - name: Permission denied file shell 
-#       command: docker build .
+   - name: create directory app
+     file: path=~/ansible/client-test/ state=directory
      
-    - name: Transfer REPO the script
-      command: docker-compose -f  /var/www/pemaza_vendas/docker-compose.yml up -d
-      
-#     - name: Execute shell to deploy with docker-compose
-#       command: sh rundockerized.sh
+   - name: Deploy (Git)
+     git:
+        repo: "https://github.com/wagneroliveira/client.git"
+        dest: ~/ansible/client-test
+#         version: "{{ version | default('master') }}"
+        force: yes
+
+   - command: sh rundockerized.sh
+
+...
+
