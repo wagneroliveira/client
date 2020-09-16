@@ -15,7 +15,8 @@
          force: yes
 
     - name: Execute script to docker-compose
-      command: sh ~/ansible/client-test/rundockerized.sh
+      comnand: docker-compose -f ~/ansible/client-test/docker-compose.yml up -d
+#       command: sh ~/ansible/client-test/rundockerized.sh
 
 ...
 
