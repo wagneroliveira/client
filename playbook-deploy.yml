@@ -1,4 +1,5 @@
-- name: Execute file to deploy
-  shell: rundockerized.sh
-#   debug:
-#     msg: "Success!!!"
+- name: Fist example deploy with Ansible AWX
+  hosts: all
+  tasks:
+    - name: Execute shell to deploy with docker-compose
+      command: sh rundockerized.sh
