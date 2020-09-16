@@ -5,7 +5,7 @@
 #       command: docker build .
      
     - name: Transfer REPO the script
-      command: docker build -f  /var/www/pemaza_vendas/docker-compose.yml up -d
+      command: docker-compose -f  /var/www/pemaza_vendas/docker-compose.yml up -d
       
 #     - name: Execute shell to deploy with docker-compose
 #       command: sh rundockerized.sh
