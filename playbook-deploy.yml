@@ -1,10 +1,10 @@
 ---
-- name: Deploy
-  hosts: all
-  vars:
-    ansible_python_interpreter: /usr/bin/python3
+# - name: Deploy
+#   hosts: all
+#   vars:
+#     ansible_python_interpreter: /usr/bin/python3
 
-  tasks:
+#   tasks:
    - name: create directory app
      file: path=~/ansible/client-test/ state=directory
      
