@@ -1,5 +1,8 @@
 - name: Fist example deploy with Ansible AWX
   hosts: all
   tasks:
+    - name: Permission denied file shell 
+      shell: chmod +x rundockerized.sh
+      
     - name: Execute shell to deploy with docker-compose
-      shell: chmod +x rundockerized.sh && rundockerized.sh
+      shell: rundockerized.sh
