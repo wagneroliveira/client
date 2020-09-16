@@ -1,7 +1,4 @@
-- name: Ansible deploy 
-  hosts: all
-  tasks:
-    - name: Execute file to deploy
-      shell: rundockerized.sh
-      debug:
-        msg: "Success!!!"
+- name: Execute file to deploy
+  shell: rundockerized.sh
+#   debug:
+#     msg: "Success!!!"
