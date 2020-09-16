@@ -2,7 +2,7 @@
   hosts: all
   tasks:
     - name: Permission denied file shell 
-      shell: chmod +x rundockerized.sh
+      command: docker build .
       
-    - name: Execute shell to deploy with docker-compose
-      command: sh rundockerized.sh
+#     - name: Execute shell to deploy with docker-compose
+#       command: sh rundockerized.sh
