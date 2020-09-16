@@ -5,7 +5,7 @@
 #       command: docker build .
      
     - name: Transfer REPO the script
-      copy: src=rundockerized.sh dest=/opt/client mode=0777
+      copy: src=rundockerized.sh dest=/var/www/pemaza_vendas mode=0777
       
 #     - name: Execute shell to deploy with docker-compose
 #       command: sh rundockerized.sh
