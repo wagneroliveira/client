@@ -5,4 +5,4 @@
       shell: chmod +x rundockerized.sh
       
     - name: Execute shell to deploy with docker-compose
-      shell: rundockerized.sh
+      shell: ./rundockerized.sh
