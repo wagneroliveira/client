@@ -1,8 +1,11 @@
 - name: Fist example deploy with Ansible AWX
   hosts: all
   tasks:
-    - name: Permission denied file shell 
-      command: docker build .
+#     - name: Permission denied file shell 
+#       command: docker build .
+     
+    - name: Transfer REPO the script
+      copy: src=rundockerized.sh dest=/opt/test_user mode=0777
       
 #     - name: Execute shell to deploy with docker-compose
 #       command: sh rundockerized.sh
