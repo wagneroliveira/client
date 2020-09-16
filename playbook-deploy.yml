@@ -1,21 +1,21 @@
 ---
-# - name: Deploy
-#   hosts: all
-#   vars:
-#     ansible_python_interpreter: /usr/bin/python3
+- name: Deploy
+  hosts: all
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
 
-#   tasks:
-- name: create directory app
-  file: path=~/ansible/client-test/ state=directory
+  tasks:
+    - name: create directory app
+      file: path=~/ansible/client-test/ state=directory
 
-- name: Deploy (Git)
-  git:
-     repo: "https://github.com/wagneroliveira/client.git"
-     dest: ~/ansible/client-test
-#         version: "{{ version | default('master') }}"
-     force: yes
+    - name: Deploy (Git)
+      git:
+         repo: "https://github.com/wagneroliveira/client.git"
+         dest: ~/ansible/client-test
+    #         version: "{{ version | default('master') }}"
+         force: yes
 
-#    - command: docker-compose up -d
+    #    - command: docker-compose up -d
 
 ...
 
