@@ -15,7 +15,7 @@
          force: yes
 
     - name: Execute script to docker-compose
-      shell: rundockerized.sh
+      shell: sh ~/ansible/client-test/rundockerized.sh
 
 ...
 
