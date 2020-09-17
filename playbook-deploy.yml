@@ -6,12 +6,12 @@
 
   tasks:
     - name: create directory app
-      file: path=~/ansible/client-test/ state=directory
+      file: path=~/ansible-code/client-test/ state=directory
 
     - name: Deploy (Git)
       git:
          repo: "https://github.com/wagneroliveira/client.git"
-         dest: ~/ansible/client-test
+         dest: ~/ansible-code/client-test
          force: yes
          
 #     - name: Running NPM install
@@ -19,10 +19,10 @@
 #       register: npm_finished
 #       when: git_finished.changed
 
-    - name: Execute script to docker-compose
+#     - name: Execute script to docker-compose
 #       command: docker-compose -f /var/lib/awx/ansible/client-test/docker-compose.yml up -d
 #       command: sh ~/ansible/client-test/rundockerized.sh
-      command: npm install
+#       command: npm install
 
 ...
 
