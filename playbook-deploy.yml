@@ -13,11 +13,16 @@
          repo: "https://github.com/wagneroliveira/client.git"
          dest: ~/ansible/client-test
          force: yes
+         
+#     - name: Running NPM install
+#       npm: path={{homeDir}}/{{appDir}}/backened
+#       register: npm_finished
+#       when: git_finished.changed
 
     - name: Execute script to docker-compose
 #       command: docker-compose -f /var/lib/awx/ansible/client-test/docker-compose.yml up -d
 #       command: sh ~/ansible/client-test/rundockerized.sh
-      command: "npm install && npm start"
+      command: npm install
 
 ...
 
