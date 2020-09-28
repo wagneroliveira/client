@@ -23,6 +23,7 @@
 
     # Build para gerar o dist
     - name: Build project compras to generate dist
+      become: yes
       command: npm run build
       args:
         chdir: "/volumes/erp/client"
