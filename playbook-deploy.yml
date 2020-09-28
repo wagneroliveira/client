@@ -6,13 +6,27 @@
 
   tasks:
     - name: create directory app
-      file: path=~/ansible-code/client-test/ state=directory
+      become: yes
+      file: path=/volumes/erp/frontend state=directory
 
     - name: Deploy (Git)
+      become: yes
       git:
          repo: "https://github.com/wagneroliveira/client.git"
-         dest: ~/ansible-code/client-test
+         dest: /volumes/erp/frontend
          force: yes
+         
+    - name: Install dependencies
+      become: yes
+      npm:
+        path: "/volumes/erp/frontend"
+
+    # Build para gerar o dist
+    - name: Build project compras to generate dist
+      command: npm run build
+      args:
+        chdir: "/volumes/erp/frontend"
+
          
 #     - name: Running NPM install
 #       npm: path={{homeDir}}/{{appDir}}/backened
