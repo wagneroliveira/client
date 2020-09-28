@@ -7,25 +7,25 @@
   tasks:
     - name: create directory app
       become: yes
-      file: path=/volumes/erp/frontend state=directory
+      file: path=/volumes/erp/client state=directory
 
     - name: Deploy (Git)
       become: yes
       git:
          repo: "https://github.com/wagneroliveira/client.git"
-         dest: /volumes/erp/frontend
+         dest: /volumes/erp/client
          force: yes
          
     - name: Install dependencies
       become: yes
       npm:
-        path: "/volumes/erp/frontend"
+        path: "/volumes/erp/client"
 
     # Build para gerar o dist
     - name: Build project compras to generate dist
       command: npm run build
       args:
-        chdir: "/volumes/erp/frontend"
+        chdir: "/volumes/erp/client"
 
          
 #     - name: Running NPM install
