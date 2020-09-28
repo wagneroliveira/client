@@ -16,6 +16,13 @@
          dest: /volumes/erp/client
          force: yes
          
+      # Instalando nodejs e suas dependencias
+    - name: Install Node and NPM
+      become: yes
+      apt:
+        name: nodejs
+        state: latest
+         
     - name: Install dependencies
       become: yes
       npm:
@@ -27,14 +34,17 @@
       command: npm run build
       args:
         chdir: "/volumes/erp/client"
+        
+#     - name: Execute docker-compose
+#       command: docker-compose up -d
+#       args:
+#          chdir: "/volumes/erp/client"
 
-         
     - name: Execute script to docker-compose
-      command: docker-compose up -d
+      become: yes
+      command: sh rundockerized.sh
       args:
          chdir: "/volumes/erp/client"
-#        command: sh ~/ansible/client-test/rundockerized.sh
-#        command: npm install
 
 ...
 
