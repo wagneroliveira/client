@@ -29,10 +29,10 @@
         chdir: "/volumes/erp/client"
 
          
-     - name: Execute script to docker-compose
-       command: docker-compose up -d
-       args:
-          chdir: "/volumes/erp/client"
+    - name: Execute script to docker-compose
+      command: docker-compose up -d
+      args:
+         chdir: "/volumes/erp/client"
 #        command: sh ~/ansible/client-test/rundockerized.sh
 #        command: npm install
 
