@@ -29,7 +29,7 @@
         path: "/volumes/erp/client"
 
     # Build para gerar o dist
-    - name: Build project compras to generate dist
+    - name: Build project client to generate dist
       become: yes
       command: npm run build
       args:
