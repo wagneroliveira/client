@@ -9,7 +9,7 @@ on:
 
 jobs:
 
-  build:
+  CI:
     runs-on: ubuntu-latest
     
     steps:
@@ -30,3 +30,19 @@ jobs:
           tags: |
             w0liveira/client:latest
             w0liveira/client:${{ github.run_number }}
+    
+  CD:
+    needs: [CI]
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Kubernetes Set Context
+        uses: Azure/k8s-set-context@v2
+        with:
+          method: kubeconfig
+          kubeconfig: ${{ secrets.K8S_KUBCONFIG }}
+
+
+  
