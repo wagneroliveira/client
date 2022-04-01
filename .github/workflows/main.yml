@@ -14,9 +14,19 @@ jobs:
     
     steps:
       - uses: actions/checkout@v3
-
+      ##
       - name: Docker Login
         uses: docker/login-action@v1.14.1
         with: 
           username: ${{ secrets.DOCKERHUB_USER }}
           password: ${{ secrets.DOCKERHUB_PWD }}
+          
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v2.10.0
+        with:
+          context: ./server/
+          file: ./server/Dockerfile
+          push: true
+          tags: 
+            w0liveira/client:latest
+            w0liveira/client:${{ github.run_number }}
