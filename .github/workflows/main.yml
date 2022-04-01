@@ -1,4 +1,4 @@
-name: CI
+name: CI - Continuos Integrations
 
 on:
   push:
