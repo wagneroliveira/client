@@ -31,18 +31,25 @@ jobs:
             w0liveira/client:latest
             w0liveira/client:${{ github.run_number }}
     
-  CD:
-    needs: [CI]
-    runs-on: ubuntu-latest
+#   CD:
+#     needs: [CI]
+#     runs-on: ubuntu-latest
     
-    steps:
-      - uses: actions/checkout@v3
+#     steps:
+#       - uses: actions/checkout@v3
       
-      - name: Kubernetes Set Context
-        uses: Azure/k8s-set-context@v2
-        with:
-          method: kubeconfig
-          kubeconfig: ${{ secrets.K8S_KUBCONFIG }}
+#       - name: Kubernetes Set Context
+#         uses: Azure/k8s-set-context@v2
+#         with:
+#           method: kubeconfig
+#           kubeconfig: ${{ secrets.K8S_KUBCONFIG }}
+          
+#       - name: Deploy to Kubernetes cluster
+#         uses: Azure/k8s-deploy@v3.0
+#         with:
+#           images: w0liveira/client:${{ github.run_number }}
+#           manifests: |
+#             k8s/deployment.yaml
 
 
   
